@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seema Jahagirdar — Data Scientist</title>
+<meta name="description" content="Senior data scientist specializing in causal inference and marketing optimization. Production ML pipelines, Shapley attribution, difference-in-differences, and A/B holdout design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16202E;
+    --paper:#FAFBFC;
+    --muted:#5C6B7A;
+    --line:#E3E8ED;
+    --accent:#0F766E;        /* treatment / measured effect */
+    --accent-soft:rgba(15,118,110,.10);
+    --control:#94A3B8;       /* counterfactual / control */
+    --card:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 28px}
+  .mono{font-family:"IBM Plex Mono",monospace}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.72rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--accent);
+  }
+
+  /* ---------- HERO ---------- */
+  header{padding:64px 0 28px}
+  .topbar{display:flex;justify-content:space-between;align-items:center;font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--muted)}
+  .topbar a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;transition:.2s}
+  .topbar a:hover{color:var(--ink);border-color:var(--accent)}
+  .avail{display:inline-flex;align-items:center;gap:7px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+
+  .hero{padding:46px 0 40px;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+  h1{
+    font-family:"Space Grotesk",sans-serif;
+    font-weight:600;
+    font-size:clamp(2.4rem,6vw,3.5rem);
+    line-height:1.02;
+    letter-spacing:-.02em;
+  }
+  h1 .accent{color:var(--accent)}
+  .lede{margin-top:18px;font-size:1.08rem;color:var(--muted);max-width:34ch}
+  .lede strong{color:var(--ink);font-weight:600}
+  .cta-row{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px}
+  .btn{
+    font-family:"IBM Plex Mono",monospace;font-size:.82rem;
+    padding:11px 18px;border-radius:7px;text-decoration:none;
+    border:1px solid var(--ink);color:var(--ink);transition:.18s;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .btn.primary:hover{background:var(--accent);border-color:var(--accent)}
+
+  /* ---------- SIGNATURE: treatment vs counterfactual ---------- */
+  .signature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 18px 16px}
+  .sig-cap{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .legend{display:flex;gap:16px;margin-top:10px;font-family:"IBM Plex Mono",monospace;font-size:.68rem;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .swatch{width:18px;height:3px;border-radius:2px;display:inline-block}
+
+  /* ---------- AT A GLANCE ---------- */
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .strip div{padding:18px 6px;border-left:1px solid var(--line)}
+  .strip div:first-child{border-left:none}
+  .strip .k{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .strip .v{font-family:"Space Grotesk",sans-serif;font-weight:500;font-size:1.02rem;margin-top:4px;line-height:1.2}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:62px 0}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:34px}
+  .sec-head h2{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:1.5rem;letter-spacing:-.01em}
+  .sec-head .num{font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--control)}
+
+  /* ---------- WORK ---------- */
+  .project{border-top:1px solid var(--line);padding:30px 0;display:grid;grid-template-columns:auto 1fr;gap:28px}
+  .project:last-child{border-bottom:1px solid var(--line)}
+  .p-idx{font-family:"IBM Plex Mono",monospace;font-size:.82rem;color:var(--accent);padding-top:5px}
+  .p-title{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:1.2rem;letter-spacing:-.01em}
+  .p-meta{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--muted);margin-top:3px}
+  .p-body{margin-top:12px;color:#384350}
+  .tags{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+  .tag{font-family:"IBM Plex Mono",monospace;font-size:.68rem;color:var(--accent);background:var(--accent-soft);padding:4px 9px;border-radius:5px}
+
+  /* ---------- ABOUT + SKILLS ---------- */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+  .about p{color:#384350;margin-bottom:14px}
+  .skillgroup{margin-bottom:18px}
+  .skillgroup .lbl{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .skillgroup .items{color:#384350;font-size:.95rem}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line);padding:54px 0 70px;text-align:center}
+  footer h3{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:1.6rem;letter-spacing:-.01em;margin-bottom:8px}
+  footer p{color:var(--muted);margin-bottom:24px}
+  .foot-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .copy{margin-top:40px;font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--control)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:720px){
+    .hero{grid-template-columns:1fr;gap:30px}
+    .signature{order:2}
+    .strip{grid-template-columns:repeat(2,1fr)}
+    .strip div:nth-child(3){border-left:none}
+    .project{grid-template-columns:1fr;gap:10px}
+    .two{grid-template-columns:1fr;gap:34px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="topbar">
+      <span>SJ — Data Scientist</span>
+    </div>
+
+    <div class="hero">
+      <div>
+        <p class="eyebrow">Causal inference · ML in production</p>
+        <h1>Seema<br>Jahagirdar<span class="accent">.</span></h1>
+        <p class="lede">I build production ML that measures <strong>true effect</strong> — separating what a campaign actually caused from what would have happened anyway.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="mailto:seema.jahagirdar1@gmail.com">Email me</a>
+          <a class="btn" href="https://www.linkedin.com/in/seema-jahagirdar" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
+        </div>
+      </div>
+
+      <!-- SIGNATURE: difference-in-differences -->
+      <div class="signature reveal">
+        <div class="sig-cap">Difference-in-differences</div>
+        <svg viewBox="0 0 300 150" width="100%" role="img" aria-label="Chart showing treatment outcome rising above a counterfactual control line, the gap being the measured effect">
+          <!-- grid -->
+          <g stroke="var(--line)" stroke-width="1">
+            <line x1="0" y1="38" x2="300" y2="38"/>
+            <line x1="0" y1="76" x2="300" y2="76"/>
+            <line x1="0" y1="114" x2="300" y2="114"/>
+            <line x1="150" y1="10" x2="150" y2="130" stroke-dasharray="3 4"/>
+          </g>
+          <!-- shaded effect gap -->
+          <path d="M150,70 L300,28 L300,58 L150,90 Z" fill="var(--accent-soft)"/>
+          <!-- counterfactual (control) -->
+          <path d="M10,118 L150,90 L300,58" fill="none" stroke="var(--control)" stroke-width="2.5" stroke-dasharray="5 5"/>
+          <!-- treatment -->
+          <path d="M10,118 L150,90 L300,28" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+          <!-- intervention marker -->
+          <circle cx="150" cy="90" r="3.5" fill="var(--ink)"/>
+          <text x="156" y="24" class="mono" font-size="9" fill="var(--muted)">intervention</text>
+        </svg>
+        <div class="legend">
+          <span><i class="swatch" style="background:var(--accent)"></i>Treatment</span>
+          <span><i class="swatch" style="background:var(--control)"></i>Counterfactual</span>
+          <span><i class="swatch" style="background:var(--accent-soft)"></i>Measured lift</span>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div class="wrap">
+  <div class="strip reveal">
+    <div><div class="k">Focus</div><div class="v">Causal ML</div></div>
+    <div><div class="k">Current</div><div class="v">Data Scientist, OPTX</div></div>
+    <div><div class="k">Stack</div><div class="v">Python · SQL · Airflow</div></div>
+    <div><div class="k">Based</div><div class="v">United States</div></div>
+  </div>
+</div>
+
+<!-- SELECTED WORK -->
+<div class="wrap">
+  <section>
+    <div class="sec-head">
+      <span class="num">01</span>
+      <h2>Selected work</h2>
+    </div>
+
+    <div class="project reveal">
+      <div class="p-idx">A</div>
+      <div>
+        <div class="p-title">Personalized Marketing Optimization</div>
+        <div class="p-meta">Production ML · current role</div>
+        <p class="p-body">Designed and built a system that personalizes marketing offers at the individual customer level under a fixed budget, shifting spend toward higher-value customers. Built statistical validation directly into the workflow so each recommendation's impact can be measured rather than assumed.</p>
+        <div class="tags"><span class="tag">personalization</span><span class="tag">causal validation</span><span class="tag">A/B holdout</span><span class="tag">production ML</span></div>
+      </div>
+    </div>
+
+    <div class="project reveal">
+      <div class="p-idx">B</div>
+      <div>
+        <div class="p-title">Multi-Touch Revenue Attribution</div>
+        <div class="p-meta">Production pipeline · marketing analytics</div>
+        <p class="p-body">Built a production system that fairly attributes revenue across overlapping marketing offers when a customer engages with several at once, so no offer is credited beyond the value it actually drove. Runs at scale over large transaction volumes.</p>
+        <div class="tags"><span class="tag">attribution modeling</span><span class="tag">causal baseline</span><span class="tag">production pipeline</span></div>
+      </div>
+    </div>
+
+    <div class="project reveal">
+      <div class="p-idx">C</div>
+      <div>
+        <div class="p-title">Causal Measurement of Marketing Events</div>
+        <div class="p-meta">Production pipeline</div>
+        <p class="p-body">Built an automated pipeline that measures the true incremental impact of marketing events using quasi-experimental causal methods — isolating genuine lift from seasonality and selection bias where randomized testing wasn't possible. Replaced naive before/after estimates with a defensible measurement.</p>
+        <div class="tags"><span class="tag">causal inference</span><span class="tag">quasi-experiment</span><span class="tag">experimentation</span></div>
+      </div>
+    </div>
+
+    <div class="project reveal">
+      <div class="p-idx">D</div>
+      <div>
+        <div class="p-title">Fault Detection for Quadrupedal Robots</div>
+        <div class="p-meta">GRASP Lab, University of Pennsylvania</div>
+        <p class="p-body">Chose autoencoders for anomaly-based limb-fault detection precisely because labeled fault data was scarce — unsupervised over supervised — and used an LSTM for time-series fault classification. Improved detection accuracy by 30% (96% of faults identified), 81% F1 on classification.</p>
+        <div class="tags"><span class="tag">autoencoders</span><span class="tag">LSTM</span><span class="tag">anomaly detection</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PROJECTS -->
+<div class="wrap">
+  <section>
+    <div class="sec-head">
+      <span class="num">02</span>
+      <h2>Projects</h2>
+    </div>
+
+    <div class="project reveal">
+      <div class="p-idx">E</div>
+      <div>
+        <div class="p-title">Building Utilities Cost Reduction</div>
+        <div class="p-meta">Wharton Customer Analytics · Python, scikit-learn</div>
+        <p class="p-body">Built a regression model to forecast energy usage across 100 university buildings, cutting forecast error (MAPE) from 146% to 16% from three years of consumption data — supporting cost and carbon-footprint reduction.</p>
+        <div class="tags"><span class="tag">regression</span><span class="tag">forecasting</span><span class="tag">scikit-learn</span></div>
+      </div>
+    </div>
+
+    <div class="project reveal">
+      <div class="p-idx">F</div>
+      <div>
+        <div class="p-title">Kindle Joy — Book Browsing Database</div>
+        <div class="p-meta">SQL, AWS, Databases</div>
+        <p class="p-body">Designed an AWS-based schema to manage 2 million records tracking user behavior and book-browsing patterns, and optimized SQL queries to bring retrieval time down from 240 seconds to 1 second.</p>
+        <div class="tags"><span class="tag">SQL</span><span class="tag">AWS</span><span class="tag">database design</span></div>
+      </div>
+    </div>
+
+    <div class="project reveal">
+      <div class="p-idx">G</div>
+      <div>
+        <div class="p-title">Lexical Stylistic Notions with LLMs</div>
+        <div class="p-meta">PyTorch, HuggingFace, scikit-learn</div>
+        <p class="p-body">Used BERT embeddings to analyze word complexity and formality, improving classification accuracy from 64% to 83% by refining contextual embeddings and reducing cluster anisotropy across similarity metrics.</p>
+        <div class="tags"><span class="tag">BERT</span><span class="tag">NLP</span><span class="tag">PyTorch</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ABOUT + SKILLS -->
+<div class="wrap">
+  <section>
+    <div class="sec-head">
+      <span class="num">03</span>
+      <h2>About &amp; toolkit</h2>
+    </div>
+    <div class="two">
+      <div class="about reveal">
+        <p>I'm a data scientist who works at the intersection of causal inference, machine learning, and production engineering — the rare trio where a model isn't just accurate, but provably moves the metric it's meant to.</p>
+        <p>Most of my recent work is in marketing analytics — optimizing how budget is allocated, attributing revenue fairly across overlapping touchpoints, and measuring whether interventions actually caused the outcomes they're credited with.</p>
+        <p>Earlier, I led a team at an ISP serving 500K users to a 5% cache-efficiency gain (~$120K/yr saved), and built ML for robotics research at Penn, where I earned my M.S. in Electrical Engineering.</p>
+      </div>
+      <div class="reveal">
+        <div class="skillgroup">
+          <div class="lbl">Causal inference</div>
+          <div class="items">Difference-in-differences · synthetic control · A/B holdout design · power analysis · attribution modeling</div>
+        </div>
+        <div class="skillgroup">
+          <div class="lbl">Modeling</div>
+          <div class="items">Regression · gradient boosting · clustering &amp; segmentation · autoencoders · LSTM · GAMs</div>
+        </div>
+        <div class="skillgroup">
+          <div class="lbl">Engineering</div>
+          <div class="items">Python (pandas, NumPy, SciPy, scikit-learn) · SQL / T-SQL · Airflow · cron orchestration · Azure Blob · AWS</div>
+        </div>
+        <div class="skillgroup">
+          <div class="lbl">Generative AI</div>
+          <div class="items">LLMs · Retrieval-Augmented Generation · prompt engineering</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER CTA -->
+<footer>
+  <div class="wrap">
+    <h3>Let's talk.</h3>
+    <p>The fastest way to reach me:</p>
+    <div class="foot-links">
+      <a class="btn primary" href="mailto:seema.jahagirdar1@gmail.com">seema.jahagirdar1@gmail.com</a>
+      <a class="btn" href="https://www.linkedin.com/in/seema-jahagirdar" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
+    </div>
+    <div class="copy">© 2026 Seema Jahagirdar · Built as a static site on GitHub Pages</div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
