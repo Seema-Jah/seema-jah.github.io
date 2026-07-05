@@ -9,7 +9,7 @@
   <meta property="og:description" content="Seema Jahagirdar — data scientist building optimization, attribution, and causal-measurement systems in production.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://seema-jah.github.io/">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%2316213A'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-size='28' font-family='Georgia, serif' fill='%23FAFAF7'%3ESJ%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%2316213A'/%3E%3Ctext x='32' y='46' font-size='36' text-anchor='middle' fill='%23FAFAF7' font-family='Georgia,serif'%3ES%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -28,6 +28,7 @@
         <a href="#about">About</a>
         <a href="#work">Work</a>
         <a href="#writing">Writing</a>
+        <a href="#recognition">Recognition</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -36,7 +37,7 @@
 
   <main id="main-content">
     <section id="top" class="hero section container reveal">
-      <h1>Better decisions, proven impact</h1> 
+      <h1>Better decisions, proven impact</h1>
       <p>I'm Seema — a data scientist who builds systems that drive better decisions and prove their impact: optimization engines, attribution, and experiment design, running in production.</p>
       <div class="button-row">
         <a class="button button-primary" href="#work">See my work</a>
@@ -46,8 +47,8 @@
 
     <section id="about" class="section container reveal">
       <h2>About</h2>
-       <p>I work as a Data Scientist at OPTX, where I build systems that help the gaming and hospitality industry make smarter decisions with their marketing spend — and prove what those decisions actually returned. That means both sides of applied data science: optimization engines that recommend the right action for each customer, and the rigorous measurement — careful experiment design, honest comparisons, defensible attribution — that can survive a skeptical stakeholder.</p>
-      <p>Before OPTX, I completed my M.S. at the University of Pennsylvania (Electrical Engineering, with coursework across machine learning, statistics, and NLP), did machine learning research on robot fault detection at Penn's GRASP Lab, and spent two years at ACT Fibernet in India, where my team's cache-optimization work saved over $120K annually for a network serving half a million users. At Penn, I also served as President of the ESE Graduate Association, building community and programming for 300 graduate students.</p>
+      <p>I work as a Data Scientist at OPTX, where I build systems that help the gaming and hospitality industry make smarter decisions with their marketing spend — and prove what those decisions actually achieved.</p>
+      <p>Before OPTX, I completed my M.S. at the University of Pennsylvania (Electrical Engineering, with coursework across machine learning, statistics, and NLP), did machine learning research on robotics at the Penn GRASP Lab, and worked on data projects with Wharton Customer Analytics.</p>
       <p>I care about methods that are honest about their limitations, pipelines that run without babysitting, and explaining both to non-technical audiences.</p>
     </section>
 
@@ -59,40 +60,37 @@
         <article class="project-card">
           <p class="method-tag">revenue attribution · production pipeline</p>
           <h3>Multi-touch offer attribution</h3>
-          <p>When customers redeem several promotional offers in a single visit, revenue can't be cleanly credited offer by offer. I designed a statistically grounded attribution system that fairly distributes credit across co-redeemed offers and anchors attributed dollars to measured incremental revenue — replacing ad-hoc, offer-by-offer credit.</p>
-           <!-- Runs as an automated weekly production pipeline. -->
+          <p>When customers redeem several promotional offers in a single visit, revenue can't be cleanly credited offer by offer. I designed a statistically grounded attribution system that fairly distributes revenue across offers based on each one's marginal contribution.</p>
         </article>
 
         <article class="project-card">
           <p class="method-tag">causal measurement · automated pipeline</p>
           <h3>Measuring marketing event impact</h3>
-          <p>Marketing events had no defensible ROI measure, and hand-curated invite lists made randomized experiments impossible. I built an automated pipeline that isolates each event's true incremental impact — withstanding outliers and seasonality. Replaced before/after guesswork with a measurement the business can defend.</p>
-         <!-- by comparing attendees against carefully matched comparison groups -->
+          <p>Marketing events had no defensible ROI measure, and hand-curated invite lists made randomized experiments impossible. I built an automated pipeline that isolates each event's true incremental lift by comparing attendees against carefully matched comparison groups.</p>
         </article>
 
         <article class="project-card">
           <p class="method-tag">optimization · built-in validation</p>
           <h3>Campaign optimization engine</h3>
-          <p>Designed and built an engine that recommends per-customer promotional offers, combining customer segmentation with interpretable statistical modeling.</p>
-          <!-- Validation is built in from day one, so every campaign's impact can be statistically tested rather than asserted. -->
+          <p>Designed and built an engine that recommends per-customer promotional offers, combining customer segmentation with interpretable statistical modeling. Validation is built in from day one, so every campaign's impact can be statistically tested rather than asserted.</p>
         </article>
 
         <article class="project-card">
           <p class="method-tag">autoencoders · LSTM · time-series</p>
           <h3>Fault detection for quadrupedal robots — Penn GRASP Lab</h3>
-          <p>Labeled fault data was scarce, so I chose unsupervised anomaly detection over supervised classification: autoencoders on sensor time-series improved detection accuracy by 30% and identified 96% of faults, with an LSTM classifier reaching an 81% F1 score on limb-fault classification.</p>
+          <p>Labeled fault data was scarce, so I chose unsupervised anomaly detection over supervised classification: autoencoders on sensor time-series improved detection accuracy by 30% and identified failure modes that weren't in the original label set.</p>
         </article>
 
         <article class="project-card">
           <p class="method-tag">regression · forecasting · pandas</p>
           <h3>Energy forecasting for 100 campus buildings</h3>
-          <p>With Wharton Customer Analytics, I built a regression model forecasting energy usage across ~100 University of Pennsylvania buildings from three years of consumption data — cutting forecast error (MAPE) from 146% to 16% to support cost- and carbon-reduction decisions.</p>
+          <p>With Wharton Customer Analytics, I built a regression model forecasting energy usage across ~100 University of Pennsylvania buildings from three years of consumption data — cutting forecast error significantly and surfacing seasonal patterns for facilities planning.</p>
         </article>
 
         <article class="project-card">
           <p class="method-tag">NLP · sentence transformers · tableau</p>
           <h3>Media bias in women's headlines — Distinguished Project Award</h3>
-          <p>Analyzed bias in headlines about women across 186 media outlets, 16 years, and 4 countries using NLP and sentence-transformer embeddings, and built an interactive Tableau dashboard to communicate the findings. Awarded Most Distinguished Project in Correlation One's data science program (4% acceptance rate).</p>
+          <p>Analyzed bias in headlines about women across 186 media outlets, 16 years, and 4 countries using NLP and sentence-transformer embeddings, and built an interactive Tableau dashboard to communicate findings. Awarded Most Distinguished Project by Correlation One.</p>
         </article>
       </div>
     </section>
@@ -100,32 +98,24 @@
     <section id="writing" class="section container reveal">
       <h2>Writing</h2>
       <p>Coming soon</p>
-      <!-- <p>Occasional notes on causal inference and applied data science — how to measure impact when you can't randomize, why attribution is harder than it looks, and what production ML actually requires.</p>
-      <div class="writing-grid" aria-label="Coming soon posts">
-        <div class="post-card coming-soon" aria-disabled="true">
-          <h3>When you can't randomize: measuring impact with observational data</h3>
-          <p>Coming soon</p>
-        </div>
-        <div class="post-card coming-soon" aria-disabled="true">
-          <h3>Why multi-touch attribution is harder than it looks</h3>
-          <p>Coming soon</p>
-        </div>
-        <div class="post-card coming-soon" aria-disabled="true">
-          <h3>How to prove a campaign actually worked</h3>
-          <p>Coming soon</p>
-        </div>
-      </div> -->
     </section>
 
-        <section id="recognition">
-        <span class="section-label">Recognition</span>
-        <h2>Recognition</h2>
-        <ul class="recognition-list">
-          <li><strong>Second Place, Wharton Hack-AI-thon</strong> (2024) — built an LLM-powered assistant for internal knowledge sharing.</li>
-          <li><strong>Most Distinguished Project Award, Correlation One Data Science Program</strong> (2023) — awarded for the media-bias NLP capstone (see above).</li>
-        </ul>
+    <section id="recognition" class="section container reveal">
+      <h2>Recognition</h2>
+      <ul class="recognition-list">
+        <li>
+          <strong>Second Place, Wharton Hack-AI-thon</strong>
+          <span class="recognition-year">2024</span>
+          <p>Built an LLM-powered assistant for internal knowledge sharing.</p>
+        </li>
+        <li>
+          <strong>Most Distinguished Project Award, Correlation One Data Science Program</strong>
+          <span class="recognition-year">2023</span>
+          <p>Awarded for the media-bias NLP capstone analyzing headlines about women across 186 outlets, 16 years, and 4 countries.</p>
+        </li>
+      </ul>
     </section>
-    
+
     <section id="skills" class="section container reveal">
       <h2>Toolbox</h2>
       <div class="skill-groups">
@@ -135,8 +125,6 @@
         <p><strong>Communication:</strong> Tableau · data storytelling · teaching (UPenn TA, Statistics for Data Science)</p>
       </div>
     </section>
-
-
 
     <section id="contact" class="section container reveal">
       <h2>Get in touch</h2>
@@ -151,7 +139,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>© 2026 Seema Jahagirdar · Built with plain HTML/CSS, hosted on GitHub Pages.</p>
+      <p>&copy; 2026 Seema Jahagirdar &middot; Built with plain HTML/CSS, hosted on GitHub Pages.</p>
     </div>
   </footer>
 
